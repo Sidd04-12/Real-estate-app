@@ -17,10 +17,18 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+const corsOptions = {
+  origin: 'https://your-frontend-app.vercel.app', // Replace with your Vercel URL
+  methods: 'GET,POST,PUT,DELETE', // Allow only specific methods as per your needs
+  credentials: true, // Include cookies if needed for session handling
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get('/', (req, res) => {
+  res.send('Hello from the backend!');
+});
 // Routes
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
