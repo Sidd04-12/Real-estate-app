@@ -11,6 +11,7 @@ import chatRoute from "./routes/chat.route.js";
 import messageRoute from "./routes/message.route.js";
 
 // Load environment variables
+console.log("Hello")
 dotenv.config();
 
 const app = express();
